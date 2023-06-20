@@ -24,6 +24,9 @@ end_frame = int(maya.cmds.getAttr("defaultRenderGlobals.endFrame"))
 frame_padding = maya.cmds.getAttr("defaultRenderGlobals.extensionPadding")
 img_format = maya.cmds.getAttr("defaultRenderGlobals.imfkey")
 
+render_dir = cmds.workspace(fileRuleEntry='images')
+render_full_path = cmds.workspace(expandName=render_dir)
+
 # Get renderable cameras
 
 cameras = maya.cmds.ls(type="camera")
@@ -47,6 +50,7 @@ print("Padding: ", frame_padding)
 print("Cameras: ", renderable_cameras)
 print("Layers: ", renderable_layers)
 print("Format: ", img_format)
+print("Render path: ", render_full_path)
 
 # Generate full paths for expected render files
 # https://help.autodesk.com/view/MAYAUL/2023/ENU/?guid=__CommandsPython_renderSettings_html
